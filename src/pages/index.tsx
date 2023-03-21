@@ -1,26 +1,38 @@
 import * as React from "react"
 import styled from "styled-components"
+import { useWindowSize } from "react-use"
+
+import FlutterBuild from "../components/builds/FlutterBuild"
 import PurchaseButton from "../components/buttons/PurchaseButton"
 import CourseCard from "../components/cards/CourseCard"
 
-const IndexPage = ()=> 
-<Wrapper>
-  <HeroWrapper>
-    <CourseCard/>
-    <TextWrapper>
-      <Logo src="../images/logos/react-logo.svg" alt="icon"/>
-      <Title>Build a Web App with React Hooks</Title>
-      <Caption> 20 Sections - 3 hrs of videos</Caption>
-      <Description> Learn how we built the new DesignCode Site with Reach Hooks</Description>
-      <AuthorWrapper>
-        <AuthorImage src="../images/avatars/Meng.png" alt="authorImage"/>
-        <Caption>Taught by Meng To</Caption>
-      </AuthorWrapper>
-      <PurchaseButton/>
-      <SmallText>Purchase Includes Access to 30 courses over 80 hours of content, including 12 hours of Swift UI, iOs 13 and iOs 14</SmallText>
-    </TextWrapper>
-  </HeroWrapper>
-</Wrapper>
+const IndexPage = ()=>  {
+  const { width } = useWindowSize()
+
+  return(
+    <Wrapper>
+      <HeroWrapper>
+        <CourseCard/>
+        <TextWrapper>
+          <Logo src="../images/logos/react-logo.svg" alt="icon"/>
+          <Title>Build a Web App with React Hooks</Title>
+          <Caption> 20 Sections - 3 hrs of videos</Caption>
+          <Description> Learn how we built the new DesignCode Site with Reach Hooks</Description>
+          <AuthorWrapper>
+            <AuthorImage src="../images/avatars/Meng.png" alt="authorImage"/>
+            <Caption>Taught by Meng To</Caption>
+          </AuthorWrapper>
+          <PurchaseButton/>
+          <SmallText>Purchase Includes Access to 30 courses over 80 hours of content, including 12 hours of Swift UI, iOs 13 and iOs 14</SmallText>
+        </TextWrapper>
+      </HeroWrapper>
+      <FlutterWrapper width={width}>
+        <FlutterBuild />
+      </FlutterWrapper>
+    </Wrapper>
+  )
+  
+}
 
 export default IndexPage
 
@@ -103,4 +115,18 @@ font-size: 14px;
 line-height: 130%;
 color: rgba(255,255,255,0.7);
 max-width: 300px;
+`
+
+const FlutterWrapper = styled.div`
+margin: 100px auto;
+border: 1px solid #fff;
+
+@media (max-width:1440px) {
+
+  transform-origin: top left;
+  transform: scale(${props => props.width / 1440});
+  
+};
+
+overflow: hidden;
 `
