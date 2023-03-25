@@ -5,6 +5,8 @@ import { useWindowSize } from "react-use"
 import FlutterBuild from "../components/builds/FlutterBuild"
 import PurchaseButton from "../components/buttons/PurchaseButton"
 import CourseCard from "../components/cards/CourseCard"
+import Divider from "../components/layout/Divider"
+import GridSetcion from "../components/sections/GridSection"
 
 const IndexPage = ()=>  {
   const { width } = useWindowSize()
@@ -26,9 +28,12 @@ const IndexPage = ()=>  {
           <SmallText>Purchase Includes Access to 30 courses over 80 hours of content, including 12 hours of Swift UI, iOs 13 and iOs 14</SmallText>
         </TextWrapper>
       </HeroWrapper>
+      <Divider/>
       <FlutterWrapper width={width}>
         <FlutterBuild />
       </FlutterWrapper>
+      <Divider/>
+      <GridSetcion/>
     </Wrapper>
   )
   
@@ -119,7 +124,6 @@ max-width: 300px;
 
 const FlutterWrapper = styled.div`
 margin: 100px auto;
-border: 1px solid #fff;
 
 @media (max-width:1440px) {
 
