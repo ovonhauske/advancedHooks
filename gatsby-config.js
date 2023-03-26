@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path:`.env`,
+})
 /**
  * Configure your Gatsby site with this file.
  *
@@ -15,6 +18,9 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
+
+    
+
     `gatsby-plugin-image`,
     `gatsby-plugin-typescript`,
     {
@@ -23,6 +29,13 @@ module.exports = {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
+    },
+    {
+      resolve: 'gatsby-source-contentful',
+        options: {
+        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
+        accessToken:  process.env.GATSBY_CONTENTFUL_DELIVERY_TOKEN,
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

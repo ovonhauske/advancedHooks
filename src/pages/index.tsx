@@ -1,4 +1,5 @@
 import * as React from "react"
+import { graphql } from "gatsby"
 import styled from "styled-components"
 import { useWindowSize } from "react-use"
 
@@ -8,8 +9,12 @@ import CourseCard from "../components/cards/CourseCard"
 import Divider from "../components/layout/Divider"
 import GridSetcion from "../components/sections/GridSection"
 
-const IndexPage = ()=>  {
+const IndexPage = ({data})=>  {
   const { width } = useWindowSize()
+
+  const title = data.allContentfulCourse.edges[0].node.title
+  const description = data.allContentfulCourse.edges[0].node.description
+  console.log(description)
 
   return(
     <Wrapper>
@@ -17,9 +22,9 @@ const IndexPage = ()=>  {
         <CourseCard/>
         <TextWrapper>
           <Logo src="../images/logos/react-logo.svg" alt="icon"/>
-          <Title>Build a Web App with React Hooks</Title>
+          <Title>{title}</Title>
           <Caption> 20 Sections - 3 hrs of videos</Caption>
-          <Description> Learn how we built the new DesignCode Site with Reach Hooks</Description>
+          <Description> {description}</Description>
           <AuthorWrapper>
             <AuthorImage src="../images/avatars/Meng.png" alt="authorImage"/>
             <Caption>Taught by Meng To</Caption>
@@ -40,6 +45,24 @@ const IndexPage = ()=>  {
 }
 
 export default IndexPage
+
+export const query = graphql`
+query IndexPageQuery {
+  allContentfulCourse {
+    edges {
+      node {
+        title
+        description
+        sections {
+          title
+          description
+          duration
+        }
+      }
+    }
+  }
+}
+`
 
 
 

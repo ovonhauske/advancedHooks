@@ -33,7 +33,7 @@ function FlutterBuild() {
           <div className="genericpanel shape6" />
         </div>
 
-        <img className="man" src="/images/components/flutter/man.svg"
+        <img className="man" src="/public/static/images/components/flutter/man.svg"
          style={{
             transform: `
             translateX(${centerY/2}px)
