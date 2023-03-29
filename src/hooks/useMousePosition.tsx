@@ -37,8 +37,7 @@ function useMousePosition(ref) :
         }),
         []
     )
-    console.log("x", centerX)
-    console.log("y", centerY)
+
 
     return [centerX, centerY, bind]
 

@@ -1,28 +1,33 @@
 import React from "react"
 import styled from "styled-components"
 import SectionRow from "../rows/SectionRow"
-import { sections } from "../../data/sectionData"
+import { Link } from "gatsby"
 
+function GridSection(props) {
+const {sections} = props
 
-function GridSetcion() {
-    return <Wrapper>
-        <Title>20 Topics</Title>
-        <Description>   All techniques are explained step-by-step, in a beginner-friendly format
-        so that you can easily follow in a cohesive way.</Description>
-        <Grid>
-            {sections.map((section, index)=>(
-                <SectionRow 
-                index={index+1} 
-                title={section.title}
-                timestamp={section.duration}
-                description={section.description}
-                />
-            ))}
-        </Grid>
-    </Wrapper>
+    return ( 
+        <Wrapper>
+            <Title>20 Topics</Title>
+            <Description>   All techniques are explained step-by-step, in a beginner-friendly format
+            so that you can easily follow in a cohesive way.</Description>
+            <Grid>
+                {sections.map((section, index)=>(
+                    <Link to={`/${section.slug}`} key={index}>
+                        <SectionRow 
+                        index={index+1} 
+                        title={section.title}
+                        timestamp={section.duration}
+                        description={section.description}
+                        />
+                    </Link>
+                ))}
+            </Grid>
+        </Wrapper>
+    )
 }
 
-export default GridSetcion
+export default GridSection
 
 
 

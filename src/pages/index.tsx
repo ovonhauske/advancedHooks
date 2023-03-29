@@ -9,37 +9,43 @@ import CourseCard from "../components/cards/CourseCard"
 import Divider from "../components/layout/Divider"
 import GridSetcion from "../components/sections/GridSection"
 
+import Layout from "../components/layout"
+
 const IndexPage = ({data})=>  {
   const { width } = useWindowSize()
 
   const title = data.allContentfulCourse.edges[0].node.title
   const description = data.allContentfulCourse.edges[0].node.description
-  console.log(description)
+
+  const sections = data.allContentfulCourse.edges[0].node.sections
+
 
   return(
-    <Wrapper>
-      <HeroWrapper>
-        <CourseCard/>
-        <TextWrapper>
-          <Logo src="../images/logos/react-logo.svg" alt="icon"/>
-          <Title>{title}</Title>
-          <Caption> 20 Sections - 3 hrs of videos</Caption>
-          <Description> {description}</Description>
-          <AuthorWrapper>
-            <AuthorImage src="../images/avatars/Meng.png" alt="authorImage"/>
-            <Caption>Taught by Meng To</Caption>
-          </AuthorWrapper>
-          <PurchaseButton/>
-          <SmallText>Purchase Includes Access to 30 courses over 80 hours of content, including 12 hours of Swift UI, iOs 13 and iOs 14</SmallText>
-        </TextWrapper>
-      </HeroWrapper>
-      <Divider/>
-      <FlutterWrapper width={width}>
-        <FlutterBuild />
-      </FlutterWrapper>
-      <Divider/>
-      <GridSetcion/>
-    </Wrapper>
+    <Layout>
+      <Wrapper>
+        <HeroWrapper>
+          <CourseCard/>
+          <TextWrapper>
+            <Logo src="../images/logos/react-logo.svg" alt="icon"/>
+            <Title>{title}</Title>
+            <Caption> 20 Sections - 3 hrs of videos</Caption>
+            <Description> {description}</Description>
+            <AuthorWrapper>
+              <AuthorImage src="../images/avatars/Meng.png" alt="authorImage"/>
+              <Caption>Taught by Meng To</Caption>
+            </AuthorWrapper>
+            <PurchaseButton/>
+            <SmallText>Purchase Includes Access to 30 courses over 80 hours of content, including 12 hours of Swift UI, iOs 13 and iOs 14</SmallText>
+          </TextWrapper>
+        </HeroWrapper>
+        <Divider/>
+
+        <GridSetcion sections = {sections}/>
+        <FlutterWrapper width={width}>
+          <FlutterBuild />
+        </FlutterWrapper>
+      </Wrapper>
+    </Layout>
   )
   
 }
@@ -57,6 +63,7 @@ query IndexPageQuery {
           title
           description
           duration
+          slug
         }
       }
     }
