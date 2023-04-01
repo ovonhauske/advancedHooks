@@ -22,6 +22,14 @@ module.exports = {
     
 
     `gatsby-plugin-image`,
+
+    {
+      resolve : `gatsby-transformer-remark`,
+      options : {
+        plugins: [`gatsby-remark-prismjs`],
+      },
+    },
+
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -38,6 +46,7 @@ module.exports = {
       }
     },
     `gatsby-transformer-sharp`,
+
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,

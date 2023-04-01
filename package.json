@@ -13,13 +13,18 @@
     "gatsby-plugin-sharp": "^5.7.0",
     "gatsby-plugin-styled-components": "^6.7.0",
     "gatsby-plugin-typescript": "^5.7.0",
+    "gatsby-remark-prismjs": "^7.8.0",
     "gatsby-source-contentful": "^8.8.0",
     "gatsby-source-filesystem": "^5.7.0",
+    "gatsby-transformer-remark": "^6.8.0",
     "gatsby-transformer-sharp": "^5.7.0",
+    "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-use": "^17.4.0",
-    "styled-components": "^5.3.9"
+    "rehype-react": "^7.1.2",
+    "styled-components": "^5.3.9",
+    "unified": "^10.1.2"
   },
   "devDependencies": {
     "@types/node": "^18.15.3",

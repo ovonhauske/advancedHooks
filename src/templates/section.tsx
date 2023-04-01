@@ -2,13 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
+import SectionContent from "../components/sections/SectionContent";
 
 
 function Section(props) {
     const {data} = props
     const sectionData = data.contentfulSection
+    const markdown = sectionData.content.childMarkdownRemark
 
-    console.log(sectionData)
+    console.log(markdown)
 
     return (
     <Layout>
@@ -18,8 +20,8 @@ function Section(props) {
               <Title> { sectionData.title } </Title>
               <Description> {sectionData.description} </Description>
           </HeroWrapper>
-          
       </Wrapper>
+      <SectionContent {...markdown}/>
     </Layout>
     )
 }
@@ -37,6 +39,11 @@ query SectionQuery($slug: String!) {
     description
     illustration {
       url
+    }
+    content {
+      childMarkdownRemark {
+        htmlAst
+      }
     }
   }
 }
